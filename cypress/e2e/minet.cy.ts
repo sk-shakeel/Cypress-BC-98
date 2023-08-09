@@ -19,7 +19,7 @@ const tradePageHands = new TradeHands();
 
 context("Test application", () => {
   describe("Minet E2E Testing", () => {
-    it("starts the testing", () => {
+    it("signup", () => {
       dependancies.viewPort();
       dependancies.accessUrl(Cypress.env("host_url"));
 
@@ -31,15 +31,18 @@ context("Test application", () => {
       signUppageHands.ClickSignUp();
       dependancies.wait();
       dashboardPageHands.Logout();
-
-      dependancies.accessUrl(Cypress.env("host_url") + "login");
+    });
+    it("login", () => {
+      dependancies.accessUrl(Cypress.env("host_login_url"));
 
       loginPageEyes.AssertTitle();
       loginPageHands.EnterEmail();
       loginPageHands.EnterPassword();
       loginPageHands.ClickSignIn();
       dependancies.wait();
+    });
 
+    it("dashboard", () => {
       dashboardPageEyes.ViewText("view all");
       dashboardPageHands.ClickToViewTransactions();
       dashboardPageEyes.ViewText("hide");
@@ -47,6 +50,9 @@ context("Test application", () => {
       dashboardPageHands.ClickToHideTransactions();
 
       dashboardPageEyes.ViewText("Discover Assets");
+    });
+
+    it("view tradePage and then buy crypto", () => {
       dashboardPageHands.ClickToViewAllAssets();
 
       tradePageEyes.ViewText("Watchlist");
@@ -59,7 +65,8 @@ context("Test application", () => {
       tradePageHands.ConfirmBuyButton();
 
       dependancies.wait();
-
+    });
+    it("trade page and then sell crypto", () => {
       tradePageHands.GoToDashboard();
       dependancies.wait();
 
@@ -73,6 +80,8 @@ context("Test application", () => {
       tradePageHands.ConfirmSellButton();
 
       dependancies.wait();
+    });
+    it("logout", () => {
       dashboardPageHands.Logout();
     });
   });

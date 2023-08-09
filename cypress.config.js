@@ -8,5 +8,7 @@ module.exports = defineConfig({
   },
   env: {
     host_url: "https://bc98fe.bootcamp64.tk/",
+    host_login_url: "https://bc98fe.bootcamp64.tk/login",
+    
   },
 });
