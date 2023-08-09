@@ -52,6 +52,27 @@ context("Test application", () => {
       tradePageEyes.ViewText("Watchlist");
       tradePageHands.ClickToViewWatchlists();
 
+      tradePageHands.ClickOnRowToViewDetails();
+      tradePageHands.ClickOnBuyButton();
+      dependancies.wait();
+
+      tradePageHands.ConfirmBuyButton();
+
+      dependancies.wait();
+
+      tradePageHands.GoToDashboard();
+      dependancies.wait();
+
+      dashboardPageEyes.ViewText("Discover Assets");
+      dashboardPageHands.ClickToViewAllAssets();
+      tradePageHands.ClickOnRowToViewDetails();
+      tradePageHands.ClickOnSellButton();
+
+      dependancies.wait();
+
+      tradePageHands.ConfirmSellButton();
+
+      dependancies.wait();
       dashboardPageHands.Logout();
     });
   });
